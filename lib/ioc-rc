@@ -814,11 +814,11 @@ __rc_jails () {
     for _jail in ${_jails} ; do
         # _jail is actually a dataset, so fulluuid needs to be faked.
         _name="$(__check_name "name" ${_jail} 2> /dev/null)"
-        _boot="$(__get_jail_prop boot ${_jail})"
+        _boot="$(__get_jail_prop boot ${_name})"
         _jail_hostid="$(__get_jail_prop hostid \
-                    ${_jail})"
+                    ${_name})"
         _priority="$(__get_jail_prop priority \
-                    ${_jail})"
+                    ${_name})"
 
         if [ "${_boot}" = "on" -a "${_jail_hostid}" = "${hostid}" ] ; then
             echo "${_priority},${_name}" >> "${_boot_list}"
