@@ -320,9 +320,9 @@ __vnet_start () {
     allow.quotas="$(__get_jail_prop allow_quotas ${_fulluuid} ${_dataset})" \
     allow.socket_af="$(__get_jail_prop allow_socket_af ${_fulluuid} \
         ${_dataset})" \
-    exec.prestart="$(__findscript ${_fulluuid} prestart ${_dataset})" \
-    exec.poststart="$(__findscript ${_fulluuid} poststart ${_dataset})" \
-    exec.prestop="$(__findscript ${_fulluuid} prestop ${_dataset})" \
+    exec.prestart="$(__findscript ${_fulluuid} prestart ${_dataset}) ${_fulluuid}" \
+    exec.poststart="$(__findscript ${_fulluuid} poststart ${_dataset}) ${_fulluuid}" \
+    exec.prestop="$(__findscript ${_fulluuid} prestop ${_dataset}) ${_fulluuid}" \
     exec.stop="$(__get_jail_prop exec_stop ${_fulluuid} ${_dataset})" \
     exec.clean="$(__get_jail_prop exec_clean ${_fulluuid} ${_dataset})" \
     exec.timeout="$(__get_jail_prop exec_timeout ${_fulluuid} ${_dataset})" \
@@ -464,9 +464,9 @@ __legacy_start () {
             ${_dataset})" \
         allow.socket_af="$(__get_jail_prop allow_socket_af "${_fulluuid}" \
             ${_dataset})" \
-        exec.prestart="$(__findscript "${_fulluuid}" prestart ${_dataset})" \
-        exec.poststart="$(__findscript "${_fulluuid}" poststart ${_dataset})" \
-        exec.prestop="$(__findscript "${_fulluuid}" prestop ${_dataset})" \
+        exec.prestart="$(__findscript "${_fulluuid}" prestart ${_dataset}) ${_fulluuid}" \
+        exec.poststart="$(__findscript "${_fulluuid}" poststart ${_dataset}) ${_fulluuid}" \
+        exec.prestop="$(__findscript "${_fulluuid}" prestop ${_dataset}) ${_fulluuid}" \
         exec.stop="$(__get_jail_prop exec_stop "${_fulluuid}" ${_dataset})" \
         exec.clean="$(__get_jail_prop exec_clean "${_fulluuid}" ${_dataset})" \
         exec.timeout="$(__get_jail_prop exec_timeout "${_fulluuid}" \
@@ -528,9 +528,9 @@ __legacy_start () {
             ${_dataset})" \
         allow.socket_af="$(__get_jail_prop allow_socket_af "${_fulluuid}" \
             ${_dataset})" \
-        exec.prestart="$(__findscript "${_fulluuid}" prestart ${_dataset})" \
-        exec.poststart="$(__findscript "${_fulluuid}" poststart ${_dataset})" \
-        exec.prestop="$(__findscript "${_fulluuid}" prestop ${_dataset})" \
+        exec.prestart="$(__findscript "${_fulluuid}" prestart ${_dataset}) ${_fulluuid}" \
+        exec.poststart="$(__findscript "${_fulluuid}" poststart ${_dataset}) ${_fulluuid}" \
+        exec.prestop="$(__findscript "${_fulluuid}" prestop ${_dataset}) ${_fulluuid}" \
         exec.stop="$(__get_jail_prop exec_stop "${_fulluuid}" ${_dataset})" \
         exec.clean="$(__get_jail_prop exec_clean "${_fulluuid}" ${_dataset})" \
         exec.timeout="$(__get_jail_prop exec_timeout "${_fulluuid}" \
@@ -583,9 +583,9 @@ __stop_jail () {
     _jail_zfs_datasets="$(__get_jail_prop jail_zfs_dataset "${_fulluuid}" \
         "${_dataset}")"
     _tag="$(__get_jail_prop tag ${_fulluuid} ${_dataset})"
-    _exec_prestop="$(__findscript ${_fulluuid} prestop ${_dataset})"
+    _exec_prestop="$(__findscript ${_fulluuid} prestop ${_dataset}) ${_fulluuid}"
     _exec_stop="$(__get_jail_prop exec_stop ${_fulluuid} ${_dataset})"
-    _exec_poststop="$(__findscript ${_fulluuid} poststop ${_dataset})"
+    _exec_poststop="$(__findscript ${_fulluuid} poststop ${_dataset}) ${_fulluuid}"
     _vnet="$(__get_jail_prop vnet ${_fulluuid} ${_dataset})"
     _state="$(__is_running ${_fulluuid})"
     _ip4="$(__get_jail_prop ip4 ${_fulluuid} ${_dataset})"
