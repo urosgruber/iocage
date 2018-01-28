@@ -5,6 +5,7 @@ __print_release () {
     supported="12.0-CURRENT
                11.1-RELEASE
                11.0-RELEASE
+               10.4-RELEASE
                10.3-RELEASE
                10.2-RELEASE
                9.3-RELEASE"
